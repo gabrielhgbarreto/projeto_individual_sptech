@@ -1,0 +1,179 @@
+.header{
+    background-image: url(assets/imgs/versoes_page/banner_versoes.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.content{
+    width: 100%;
+    height: 1500px;
+    /* background-color: #000; */
+}
+
+.content .container{
+    height: 100%;
+    flex-direction: column;
+}
+
+.versoes{
+    display: flex;
+    width: 100%;
+    height: 500px;
+    /* border-bottom: 2px solid red; */
+}
+
+.foto_esquerda{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    /* background-color: blue; */
+}
+
+.foto_esquerda img{
+    position: relative;
+    z-index: 2;
+    height: 400px;
+    margin-left: 200px;
+}
+
+.texto_direita{
+    display: flex;
+    flex-direction: column;
+    /* ---------------- align e justify invertidos */
+    align-items: center;
+    width: 50%;
+    /* background-color: green; */
+}
+
+/* .content .container .versoes .versoes_ano p{
+    font-family: titleFont;
+    color: grey;
+    font-size: 150px;
+    margin-top: 70px;
+    margin-left: -150px;
+    opacity: 40%;
+} */
+
+.texto_direita .ano{
+    position: relative;
+    z-index: 1;
+    top: 70px;
+    right: 90px;
+    font-family: titleFont;
+    color: grey;
+    font-size: 150px;
+    opacity: 40%;
+    /* background-color: purple; */
+}
+
+.texto_direita .specs{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    width: 400px;
+    height: 200px;
+}
+
+.texto_direita .specs_texto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: aqua; */
+    font-family: subTitleFont;
+    font-size: 22px;
+    /* height: 100px; */
+}
+
+.texto_direita .specs_texto p{
+    margin-bottom: 10px;
+}
+
+.texto_direita #subtitle{
+    font-size: 12px;
+    margin-bottom: 0px;
+}
+
+.texto_direita .divisoes{
+    font-size: 90px;
+    color: #FF3131;
+}
+
+#hornet_2012{
+    margin-right: 50px;
+}
+
+/* configuracoes das amostras com imagem na esquerda ^^ */
+
+
+.foto_direita{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    /* background-color: blue; */
+}
+
+.foto_direita img{
+    position: relative;
+    z-index: 2;
+    height: 420px;
+    margin-left: 200px;
+}
+
+.texto_esquerda{
+    display: flex;
+    flex-direction: column;
+    /* ---------------- align e justify invertidos */
+    align-items: center;
+    width: 50%;
+    /* background-color: green; */
+}
+
+.texto_esquerda .ano{
+    position: relative;
+    z-index: 1;
+    top: 70px;
+    left: 90px;
+    font-family: titleFont;
+    color: grey;
+    font-size: 150px;
+    opacity: 40%;
+    /* background-color: purple; */
+}
+
+.texto_esquerda .specs{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    width: 400px;
+    height: 200px;
+}
+
+.texto_esquerda .specs_texto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: aqua; */
+    font-family: subTitleFont;
+    font-size: 22px;
+    /* height: 100px; */
+}
+
+.texto_esquerda .specs_texto p{
+    margin-bottom: 10px;
+}
+
+.texto_esquerda #subtitle{
+    font-size: 12px;
+    margin-bottom: 0px;
+}
+
+.texto_esquerda .divisoes{
+    font-size: 90px;
+    color: #FF3131;
+}
+
+#hornet_2008{
+    margin-right: 300px;
+}

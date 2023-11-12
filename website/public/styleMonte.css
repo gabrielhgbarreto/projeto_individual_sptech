@@ -1,0 +1,138 @@
+.header{
+    height: 100px;
+}
+
+.navbar_element{
+    color: #000;
+}
+
+.content{
+    width: 100%;
+    height: 500px;
+}
+
+.content .container{
+    flex-direction: column;
+    height: 100%;
+    /* background-color: blue; */
+}
+
+.content .container .div_input{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 20%;
+    /* background-color: red; */
+}
+
+.content .container .div_input .input{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    width: 33%;
+    height: 100%;
+    /* background-color: green; */
+}
+
+.content .container .div_input .input select{
+    height: 30px;
+    width: 60%;
+    border: 3px solid #FF3131;
+    background-color: #fff;
+    font-family: textFont;
+}
+
+.content .container .div_input .input p{
+    margin-right: 170px;
+    margin-bottom: 2px;
+    font-family: subTitleFont;
+}
+
+#input_ronco{
+    margin-right: 150px;
+}
+
+.content .container .div_input .input input{
+    height: 30px;
+    width: 60%;
+    border: 3px solid #FF3131;
+    background-color: #fff;
+}
+
+
+.content .container .div_button_image{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 70%;
+    /* background-color: red; */
+}
+
+.content .container .div_button_image .botoes{
+    display: flex;
+    width: 20%;
+    align-items: end;
+    justify-content: center;
+    /* background-color: yellowgreen; */
+}
+
+.content .container .div_button_image button{
+    width: 130px;
+    height: 30px;
+    margin-bottom: 80px;
+    border-radius: 20px;
+    background-color: #FF3131;
+    font-family: subTitleFont;
+    border: none;
+    color: #fff;
+}
+
+.content .container .div_button_image .image{
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    height: 100%;
+    width: 60%;
+    /* background-color: red; */
+}
+
+.content .container .div_button_image .image .background_image{
+    /* background-color: blue; */
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    width: 450px;
+    height: 260px;
+}
+
+#versao_2004{
+    width: 650px;
+    margin-bottom: -10px;
+}
+
+#versao_2010{
+    width: 450px;
+    margin-bottom: -5px;
+}
+
+#versao_2012{
+    width: 450px;
+    margin-bottom: -20px;
+}
+
+.content .container .monte{
+    display: flex;
+    width: 100%;
+    height: 0;
+    justify-content: end;
+}
+
+.content .container .monte p{
+    position: relative;
+    font-family: titleFont;
+    color: grey;
+    font-size: 100px;
+    opacity: 40%;
+    bottom: 80px;
+}

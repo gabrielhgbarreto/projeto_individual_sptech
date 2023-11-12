@@ -1,0 +1,91 @@
+@font-face{
+    font-family: titleFont;
+    src: url(assets/fonts/Horizon.otf);
+}
+
+@font-face {
+    font-family: subTitleFont;
+    src: url(assets/fonts/ArchivoBlack-Regular.ttf);
+}
+
+@font-face {
+    font-family: textFont;
+    src: url(assets/fonts/Amiko-Regular.ttf);
+}
+/*-------------------------------Fontes*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    display: flex;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.header{
+    width: 100%;
+    height: 650px;
+    /* background-color: #000; */
+}
+
+.header .container{
+    height: 100px;
+}
+
+.header .container .left_menu{
+    height: 100%;
+    width: 40%;
+    /* background-color: aqua; */
+}
+
+
+.header .container .logo_menu{
+    display: flex;
+    height: 90%;
+    width: 20%;
+    justify-content: center;
+    /* background-color: black; */
+}
+
+
+.header .container .right_menu{
+    height: 100%;
+    width: 40%;
+    /* background-color: aqua; */
+}
+
+
+.header .container .navbar{
+    display: flex;
+    height: 100%;
+    list-style: none;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar_element{
+    font-family: textFont;
+    color: #fff;
+}
+
+.header .container .logo_menu .logo_fundo{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    width: 60%;
+    height: 100%;
+    background-color: #FF3131;
+}
+
+.header .container .logo_menu .logo_fundo p{
+    font-family: titleFont;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #fff;
+}
+
+

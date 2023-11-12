@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monte a Sua</title>
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="styleHeader.css">
+    <link rel="stylesheet" href="styleMonte.css">
+    <link rel="stylesheet" href="styleFooter.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="left_menu">
+                <ul class="navbar">
+                    <li class="navbar_element">VERSÕES</li>
+                    <li class="navbar_element">2024</li>
+                </ul>
+            </div>
+            <div class="logo_menu">
+                <div class="logo_fundo">
+                    <p>HORNET</p>
+                </div>
+            </div>
+            <div class="right_menu">
+                <ul class="navbar">
+                    <li class="navbar_element">LOGIN</li>
+                    <li class="navbar_element">CADASTRO</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <div class="div_input">
+                <div class="input">
+                    <p>ANO</p>
+                    <select id="select_versoes" onchange="escolherVersao()">
+                        <option value="1">1° Versão</option>
+                        <option value="2">2° Versão</option>
+                        <option selected value="3">3° Versão</option>
+                    </select></div>
+                <div class="input">
+                    <p>COR</p>
+                    <input type="color" onchange="escolheCor()" id="input_cor">
+                </div>
+                <div class="input">
+                    <p id="input_ronco">RONCO</p>
+                    <select id="select_ronco">
+                        <option value="1">Original</option>
+                        <option value="2">Sem abafadores</option>
+                        <option value="3">Direto</option>
+                    </select>
+                </div>
+            </div>
+            <div class="div_button_image">
+                <div class="botoes">
+                    <button>RONCO</button>
+                </div>
+                <div class="image">
+                    <div class="background_image" id="div_versao_escolhida"></div>
+                </div>
+                <div class="botoes">
+                    <button>SALVAR</button>
+                </div>
+            </div>
+            <div class="monte">
+                <p>Monte</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>FEITO COM AMOR!</p>
+    </div>
+    
+</body>
+</html>
+<script>
+    div_versao_escolhida.style.background = "#000";
+    div_versao_escolhida.innerHTML = `
+                <img id="versao_2012" src="assets/imgs/monte_page/2012.png" alt="">
+            `;
+
+    var listaCompleta = [];
+    var versaoEscolhida = 0;
+    var corEscolhida = '';
+
+    function escolherVersao(){
+        versaoEscolhida = select_versoes.value;
+
+        if(versaoEscolhida == 1){
+            div_versao_escolhida.innerHTML = `
+                <img id="versao_2004" src="assets/imgs/monte_page/2004.png" alt="">
+            `;
+
+        }else if(versaoEscolhida == 2){
+            div_versao_escolhida.innerHTML = `
+                <img id="versao_2010" src="assets/imgs/monte_page/2010.2.png" alt="">
+            `;
+
+        }else{
+            div_versao_escolhida.innerHTML = `
+                <img id="versao_2012" src="assets/imgs/monte_page/2012.png" alt="">
+            `;
+
+        }
+    }
+
+    function escolheCor(){
+        corEscolhida = input_cor.value;
+
+        if(corEscolhida = "#fffff"){
+            corEscolhida = "#fafafa"
+        }
+        div_versao_escolhida.style.background = corEscolhida;
+    }
+</script>
+
