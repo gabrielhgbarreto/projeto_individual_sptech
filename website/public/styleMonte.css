@@ -78,14 +78,20 @@
 }
 
 .content .container .div_button_image button{
+    background-color: #FF3131;
     width: 130px;
     height: 30px;
     margin-bottom: 80px;
+    border: 1px solid #FF3131;
     border-radius: 20px;
-    background-color: #FF3131;
     font-family: subTitleFont;
-    border: none;
     color: #fff;
+    cursor: pointer;
+}
+
+.content .container .div_button_image button:hover{
+    background-color: #fff;
+    color: #FF3131;
 }
 
 .content .container .div_button_image .image{
@@ -130,6 +136,7 @@
 
 .content .container .monte p{
     position: relative;
+    /* z-index: 0; */
     font-family: titleFont;
     color: grey;
     font-size: 100px;

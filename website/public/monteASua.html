@@ -41,33 +41,36 @@
                         <option value="1">1° Versão</option>
                         <option value="2">2° Versão</option>
                         <option selected value="3">3° Versão</option>
-                    </select></div>
+                    </select>
+                </div>
+        
                 <div class="input">
                     <p>COR</p>
                     <input type="color" onchange="escolheCor()" id="input_cor">
                 </div>
+
                 <div class="input">
                     <p id="input_ronco">RONCO</p>
-                    <select id="select_ronco">
+                    <select id="select_ronco" onchange="escolheRonco()">
                         <option value="1">Original</option>
-                        <option value="2">Sem abafadores</option>
+                        <option selected value="2">Sem abafadores</option>
                         <option value="3">Direto</option>
                     </select>
                 </div>
             </div>
             <div class="div_button_image">
                 <div class="botoes">
-                    <button>RONCO</button>
+                    <button onclick="testarRonco()">RONCO</button>
                 </div>
                 <div class="image">
                     <div class="background_image" id="div_versao_escolhida"></div>
                 </div>
-                <div class="botoes">
+                <div class="botoes" onclick="salvarDados()">
                     <button>SALVAR</button>
                 </div>
             </div>
             <div class="monte">
-                <p>Monte</p>
+                <!-- <p>Monte</p> -->
             </div>
         </div>
     </div>
@@ -79,18 +82,19 @@
 </body>
 </html>
 <script>
-    div_versao_escolhida.style.background = "#000";
+    div_versao_escolhida.style.background = "#000000";
     div_versao_escolhida.innerHTML = `
                 <img id="versao_2012" src="assets/imgs/monte_page/2012.png" alt="">
             `;
 
-    var listaCompleta = [];
-    var versaoEscolhida = 0;
-    var corEscolhida = '';
-
+    var listaDadosSalvos = [];
+    var versaoEscolhida = 3;
+    var corEscolhida = '#000000';
+    var roncoEscolhido = 2;
+    
     function escolherVersao(){
-        versaoEscolhida = select_versoes.value;
-
+        versaoEscolhida = Number(select_versoes.value);
+        
         if(versaoEscolhida == 1){
             div_versao_escolhida.innerHTML = `
                 <img id="versao_2004" src="assets/imgs/monte_page/2004.png" alt="">
@@ -112,10 +116,39 @@
     function escolheCor(){
         corEscolhida = input_cor.value;
 
-        if(corEscolhida = "#fffff"){
+        if(corEscolhida == "#fffff"){
             corEscolhida = "#fafafa"
         }
         div_versao_escolhida.style.background = corEscolhida;
+    }
+
+    function escolheRonco(){
+        roncoEscolhido = Number(select_ronco.value);
+    }
+    
+    var ronco = [new Audio('assets/audios/ronco_original.mp3'), new Audio('assets/audios/ronco_sem_abafadores.mp3'),new Audio('assets/audios/ronco_direto.mp3')];
+    
+    var contadorRonco = 0;
+    function testarRonco(){
+        ronco[contadorRonco].pause();
+
+        if(roncoEscolhido == 1){
+            contadorRonco = 0;
+
+        }else if(roncoEscolhido == 2){
+            contadorRonco = 1;
+        
+        }else{
+            contadorRonco = 2;
+
+        }
+        ronco[contadorRonco].play();
+    }
+
+    function salvarDados(){
+        listaDadosSalvos.push(versaoEscolhida, corEscolhida, roncoEscolhido);
+
+        console.log(listaDadosSalvos);
     }
 </script>
 
