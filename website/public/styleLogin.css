@@ -1,0 +1,103 @@
+.header{
+    background-image: url(assets/imgs/login_page/banner_login.png);
+    background-size: cover;
+    background-position: center;
+    height: 700px;
+}
+
+.header .container{
+    height: 100%;
+    /* background-color: #FF3131; */
+    flex-direction: column;
+    align-items: center;
+}
+
+.header .container .menu{
+    /* background-color: aqua; */
+    width: 100%;
+    height: 100px;
+    display: flex;
+}
+
+
+.header .container .card{
+    margin: auto;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 70%;
+}
+
+
+.header .container .card .div_imagem{
+    background-image: url(assets/imgs/login_page/banner_login.png);
+    background-size: cover;
+    background-position: 10%;
+    width: 60%;
+    height: 100%;
+}
+
+.header .container .card .div_campos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+    /* background-color: aqua; */
+}
+
+.header .container .card .div_campos .container_campos{
+    width: 70%;
+    height: 90%;
+    /* background-color: yellowgreen; */
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-evenly;
+}
+
+.header .container .card .div_campos .container_campos .campos{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color: red; */
+}
+
+.header .container .card .div_campos .container_campos p{
+    font-family: subTitleFont;
+    font-size: 20px;
+}
+
+.header .container .card .div_campos .container_campos .campos input{
+    height: 30px;
+    width: 100%;
+    border: 4px solid #FF3131;
+    background-color: #fff;
+}
+
+.header .container .card .div_campos .container_campos .campos input::placeholder{
+    font-family: textFont;
+    color: #000;
+    padding-left: 5px;
+}
+
+.header .container .card .div_campos .container_campos button{
+    align-self: end;
+    background-color: #FF3131;
+    width: 130px;
+    height: 30px;
+    border: 1px solid #FF3131;
+    border-radius: 20px;
+    font-family: subTitleFont;
+    color: #fff;
+    cursor: pointer;
+}
+
+.header .container .card .div_campos button:hover{
+    background-color: #fff;
+    color: #FF3131;
+}
+

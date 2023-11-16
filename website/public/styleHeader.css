@@ -67,7 +67,8 @@
     align-items: center;
 }
 
-.navbar_element{
+.header .container .navbar .navbar_element a{
+    text-decoration: none;
     font-family: textFont;
     color: #fff;
 }
