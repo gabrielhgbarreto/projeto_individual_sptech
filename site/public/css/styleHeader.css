@@ -1,16 +1,16 @@
 @font-face{
     font-family: titleFont;
-    src: url(assets/fonts/Horizon.otf);
+    src: url(../assets/fonts/Horizon.otf);
 }
 
 @font-face {
     font-family: subTitleFont;
-    src: url(assets/fonts/ArchivoBlack-Regular.ttf);
+    src: url(../assets/fonts/ArchivoBlack-Regular.ttf);
 }
 
 @font-face {
     font-family: textFont;
-    src: url(assets/fonts/Amiko-Regular.ttf);
+    src: url(../assets/fonts/Amiko-Regular.ttf);
 }
 /*-------------------------------Fontes*/
 
@@ -67,7 +67,7 @@
     align-items: center;
 }
 
-.header .container .navbar .navbar_element a{
+a{
     text-decoration: none;
     font-family: textFont;
     color: #fff;

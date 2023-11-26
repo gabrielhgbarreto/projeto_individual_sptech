@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Versões</title>
-    <link rel="stylesheet" href="fonts.css">
-    <link rel="stylesheet" href="styleHeader.css">
-    <link rel="stylesheet" href="styleIndex.css">
-    <link rel="stylesheet" href="styleFooter.css">
+    <link rel="stylesheet" href="../css/styleHeader.css">
+    <link rel="stylesheet" href="../css/styleIndex.css">
+    <link rel="stylesheet" href="../css/styleFooter.css">
 </head>
 <body>
     <div class="header">
@@ -25,8 +24,8 @@
             </div>
             <div class="right_menu">
                 <ul class="navbar">
-                    <li class="navbar_element"><a href="login.html">MONTE A SUA</a></li>
-                    <li class="navbar_element"><a href="cadastro.html">CADASTRO</a></li>
+                    <li class="navbar_element" id="verificaLogin"><a href="login.html">MONTE A SUA</a></li>
+                    <li class="navbar_element" id="verificaCadastro"><a href="cadastro.html">CADASTRO</a></li>
                 </ul>
             </div>
         </div>
@@ -36,7 +35,7 @@
         <div class="container">
             <div class="versoes">
                 <div class="foto_esquerda">
-                    <img src="assets/imgs/versoes_page/versao_2004.png" alt="Hornet modelo 2004">
+                    <img src="../assets/imgs/versoes_page/versao_2004.png" alt="Hornet modelo 2004">
                 </div>
                 <div class="texto_direita">
                     <div class="ano">2004</div>
@@ -82,14 +81,14 @@
                     </div>                    
                 </div>
                 <div class="foto_direita">
-                    <img id="hornet_2008" src="assets/imgs/versoes_page/versao_2008.png" alt="Hornet modelo 2012">
+                    <img id="hornet_2008" src="../assets/imgs/versoes_page/versao_2008.png" alt="Hornet modelo 2012">
                 </div>
             </div>
 
             
             <div class="versoes">
                 <div class="foto_esquerda">
-                    <img id="hornet_2012" src="assets/imgs/versoes_page/versao_2012.png" alt="Hornet modelo 2012">
+                    <img id="hornet_2012" src="../assets/imgs/versoes_page/versao_2012.png" alt="Hornet modelo 2012">
                 </div>
                 <div class="texto_direita">
                     <div class="ano">2012</div>
@@ -120,3 +119,15 @@
 
 </body>
 </html>
+
+<script>
+    if((sessionStorage.NOME_USUARIO).length > 0){
+        verificaLogin.innerHTML = `
+            <a href="monteASua.html">MONTE A SUA</a>
+        `;
+
+        verificaCadastro.innerHTML = `
+            <a>OLÁ, ${(sessionStorage.NOME_USUARIO).toUpperCase()}</a>
+        `;
+    }
+</script>

@@ -1,5 +1,5 @@
 .header{
-    background-image: url(assets/imgs/cadastro_page/banner_cadastro.jpg);
+    background-image: url(../assets/imgs/login_page/banner_login.png);
     background-size: cover;
     background-position: center;
     height: 700px;
@@ -19,6 +19,7 @@
     display: flex;
 }
 
+
 .header .container .card{
     margin: auto;
     background-color: #fff;
@@ -26,6 +27,15 @@
     align-items: center;
     width: 80%;
     height: 70%;
+}
+
+
+.header .container .card .div_imagem{
+    background-image: url(../assets/imgs/login_page/banner_login.png);
+    background-size: cover;
+    background-position: 10%;
+    width: 60%;
+    height: 100%;
 }
 
 .header .container .card .div_campos{
@@ -49,7 +59,7 @@
 
 .header .container .card .div_campos .container_campos .campos{
     width: 100%;
-    height: 250px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -91,9 +101,3 @@
     color: #FF3131;
 }
 
-.header .container .card .div_imagem{
-    background-image: url(assets/imgs/cadastro_page/banner_cadastro.jpg);
-    background-size: cover;
-    width: 60%;
-    height: 100%;
-}
