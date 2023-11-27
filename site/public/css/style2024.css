@@ -1,0 +1,144 @@
+.header{
+    background-image: url(../assets/imgs/2024_page/banner_2024.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.content{
+    width: 100%;
+    height: 1000px;
+    /* background-color: red; */
+}
+
+.content .container{
+    height: 100%;
+    flex-direction: column;
+    /* background-color: green; */
+}
+
+.div_versao_2024{
+    display: flex;
+    width: 100%;
+    height: 500px;
+    /* background-color: #FF3131; */
+    /* border-bottom: 2px solid red; */
+}
+
+
+.foto_direita{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    /* background-color: blue; */
+}
+
+.foto_direita img{
+    position: relative;
+    z-index: 2;
+    height: 380px;
+    right: 80px;
+}
+
+.texto_esquerda{
+    display: flex;
+    flex-direction: column;
+    /* ---------------- align e justify invertidos */
+    align-items: center;
+    width: 50%;
+    /* background-color: green; */
+}
+
+.texto_esquerda .ano{
+    position: relative;
+    z-index: 1;
+    top: 70px;
+    left: 90px;
+    font-family: titleFont;
+    color: grey;
+    font-size: 150px;
+    opacity: 40%;
+    /* background-color: purple; */
+}
+
+.texto_esquerda .specs{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    width: 400px;
+    height: 200px;
+}
+
+.texto_esquerda .specs_texto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: aqua; */
+    font-family: subTitleFont;
+    font-size: 22px;
+    /* height: 100px; */
+}
+
+.texto_esquerda .specs_texto p{
+    margin-bottom: 10px;
+}
+
+.texto_esquerda #subtitle{
+    font-size: 12px;
+    margin-bottom: 0px;
+}
+
+.texto_esquerda .divisoes{
+    font-size: 90px;
+    color: #FF3131;
+}
+
+.div_ONU{
+    display: flex;
+    /* background-color: grey; */
+    height: 500px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.div_ONU .foto_esquerda{
+    position: relative;
+    z-index: 1;
+}
+
+.texto_direita{
+    position: relative;
+    right: 100px;
+    display: flex;
+    flex-direction: column;
+    /* ---------------- align e justify invertidos */
+    align-items: start;
+    width: 50%;
+    /* background-color: green; */
+}
+
+.texto_direita .titulo_motor{
+    position: relative;
+    z-index: 0;
+    right: 130px;
+    font-family: titleFont;
+    color: grey;
+    font-size: 120px;
+    opacity: 40%;
+    /* background-color: purple; */
+}
+ 
+.ONU_content{
+    height: 250px;
+    font-family: textFont;
+    /* background-color: #FF3131; */
+}
+
+.ONU_content .ONU_images{
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    height: 60%;
+    /* background-color: green; */
+}
