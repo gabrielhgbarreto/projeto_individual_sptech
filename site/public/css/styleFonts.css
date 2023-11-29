@@ -1,0 +1,22 @@
+@font-face{
+    font-family: titleFont;
+    src: url(../assets/fonts/Horizon.otf);
+}
+
+@font-face {
+    font-family: subTitleFont;
+    src: url(../assets/fonts/ArchivoBlack-Regular.ttf);
+}
+
+@font-face {
+    font-family: textFont;
+    src: url(../assets/fonts/Amiko-Regular.ttf);
+}
+/*-------------------------------Fontes*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}

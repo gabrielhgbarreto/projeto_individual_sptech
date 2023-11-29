@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/styleFonts.css">
+    <link rel="stylesheet" href="css/styleDashboard.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="container_navbar">
+            <div class="logo">
+                <div class="fundo_logo">
+                    <p>HORNET</p>
+                </div>
+            </div>
+            <div class="menu">
+                <p>OLÁ, <span id="nome_usuario"></span></p>
+                <a class="menu_item" href="index.html">HOME</a>
+                <p class="menu_item" onclick="sair()">SAIR</p>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard">
+        <div class="dashboard_top">
+            <div class="kpi_left kpi"></div>
+            <div class="kpi_right kpi"></div>
+        </div>
+        <div class="dashboard_bottom">
+            <div class="grafico"></div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    // if(sessionStorage.length <= 0){
+    //     window.open("index.html", "_self");
+    // }
+
+    function sair(){
+        sessionStorage.clear();
+        window.open("login.html", "_self");
+    }
+</script>
