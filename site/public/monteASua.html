@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="css/styleMonte.css">
     <link rel="stylesheet" href="css/styleFooter.css">
 </head>
+
 <body>
     <div class="header">
         <div class="container">
@@ -43,7 +45,7 @@
                         <option selected value="3">3° Versão</option>
                     </select>
                 </div>
-        
+
                 <div class="input">
                     <p>COR</p>
                     <input type="color" onchange="escolheCor()" id="input_cor">
@@ -65,8 +67,8 @@
                 <div class="image">
                     <div class="background_image" id="div_versao_escolhida"></div>
                 </div>
-                <div class="botoes" onclick="salvarDados()">
-                    <button>SALVAR</button>
+                <div class="botoes">
+                    <button onclick="salvarDados()">SALVAR</button>
                 </div>
             </div>
             <div class="monte">
@@ -78,8 +80,9 @@
     <div class="footer">
         <p>FEITO COM AMOR!</p>
     </div>
-    
+
 </body>
+
 </html>
 <script>
     div_versao_escolhida.style.background = "#000000";
@@ -91,21 +94,21 @@
     var versaoEscolhida = 3;
     var corEscolhida = '#000000';
     var roncoEscolhido = 2;
-    
-    function escolherVersao(){
+
+    function escolherVersao() {
         versaoEscolhida = Number(select_versoes.value);
-        
-        if(versaoEscolhida == 1){
+
+        if (versaoEscolhida == 1) {
             div_versao_escolhida.innerHTML = `
                 <img id="versao_2004" src="assets/imgs/monte_page/2004.png" alt="">
             `;
 
-        }else if(versaoEscolhida == 2){
+        } else if (versaoEscolhida == 2) {
             div_versao_escolhida.innerHTML = `
                 <img id="versao_2010" src="assets/imgs/monte_page/2010.2.png" alt="">
             `;
 
-        }else{
+        } else {
             div_versao_escolhida.innerHTML = `
                 <img id="versao_2012" src="assets/imgs/monte_page/2012.png" alt="">
             `;
@@ -113,48 +116,109 @@
         }
     }
 
-    function escolheCor(){
+    function escolheCor() {
         corEscolhida = input_cor.value;
-
-        if(corEscolhida == "#fffff"){
-            corEscolhida = "#fafafa"
-        }
         div_versao_escolhida.style.background = corEscolhida;
+
+        // transforma as cores em rgb
+        var r = parseInt(`${corEscolhida[1]}${corEscolhida[2]}`, 16);
+        var g = parseInt(`${corEscolhida[3]}${corEscolhida[4]}`, 16);
+        var b = parseInt(`${corEscolhida[5]}${corEscolhida[6]}`, 16);
+
+        r /= 255;
+        g /= 255;
+        b /= 255;
+
+        var colorMin = Math.min(r, g, b);
+        var colorMax = Math.max(r, g, b);
+        var delta = colorMax - colorMin;
+        var hue = 0;
+
+        if (delta == 0) {
+            if(colorMax <= 0.5){
+                hue = -0.5; //-1 == preto
+            } else {
+                hue = -1; //-2 == preto
+            }
+
+        } else if (colorMax == r) {
+            hue = ((g - b) / delta) % 6;
+
+        } else if (colorMax == g) {
+            hue = (b - r) / delta + 2;
+
+        } else {
+            hue = (r - g) / delta + 4;
+
+        }
+
+        hue = Math.round(hue * 60);
+        corEscolhida = hue;
+        console.log(hue);
     }
 
-    function escolheRonco(){
+    function escolheRonco() {
         roncoEscolhido = Number(select_ronco.value);
     }
-    
-    var ronco = [new Audio('assets/audios/ronco_original.mp3'), new Audio('assets/audios/ronco_sem_abafadores.mp3'),new Audio('assets/audios/ronco_direto.mp3')];
-    
+
+    var ronco = [new Audio('assets/audios/ronco_original.mp3'), new Audio('assets/audios/ronco_sem_abafadores.mp3'), new Audio('assets/audios/ronco_direto.mp3')];
+
     var contadorRonco = 0;
-    function testarRonco(){
+    function testarRonco() {
         ronco[contadorRonco].pause();
 
-        if(roncoEscolhido == 1){
+        if (roncoEscolhido == 1) {
             contadorRonco = 0;
 
-        }else if(roncoEscolhido == 2){
+        } else if (roncoEscolhido == 2) {
             contadorRonco = 1;
-        
-        }else{
+
+        } else {
             contadorRonco = 2;
 
         }
         ronco[contadorRonco].play();
     }
 
-    function salvarDados(){
-        listaDadosSalvos.push(versaoEscolhida, corEscolhida, roncoEscolhido);
+    function salvarDados() {
+        if (versaoEscolhida == "" || corEscolhida == "" || roncoEscolhido == "") {
+            console.log("Mensagem de erro para todos os campos em branco");
 
-        console.log(listaDadosSalvos);
+        }
+
+        fetch("/dashboard/enviar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                idSever: sessionStorage.ID_USUARIO,
+                versaoServer: versaoEscolhida,
+                corServer: corEscolhida,
+                roncoServer: roncoEscolhido
+            }),
+        }).then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                console.log("Dados da moto enviados ao banco com sucesso!");
+            } else {
+                throw "Houve um erro ao tentar cadastrar a moto!";
+            }
+        })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        return false;
     }
 
-    if((sessionStorage.NOME_USUARIO).length > 0){
+
+    if ((sessionStorage.NOME_USUARIO).length > 0) {
         verificaCadastro.innerHTML = `
             <a>OLÁ, ${(sessionStorage.NOME_USUARIO).toUpperCase()}</a>
         `;
     }
 </script>
-

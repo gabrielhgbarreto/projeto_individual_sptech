@@ -1,106 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="css/styleFonts.css">
-    <link rel="stylesheet" href="css/styleHeader.css">
-    <link rel="stylesheet" href="css/styleCadastro.css">
-    <link rel="stylesheet" href="css/styleFooter.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="css/styleFonts.css">
+  <link rel="stylesheet" href="css/styleHeader.css">
+  <link rel="stylesheet" href="css/styleCadastro.css">
+  <link rel="stylesheet" href="css/styleFooter.css">
 </head>
+
 <body>
-    <div class="header">
-        <div class="container">
-            <div class="menu">
-                <div class="left_menu">
-                    <ul class="navbar">
-                        <li class="navbar_element"><a href="index.html">VERSÕES</a></li>
-                        <li class="navbar_element"><a href="2024.html">2024</a></li>
-                    </ul>
-                </div>
-                <div class="logo_menu">
-                    <div class="logo_fundo">
-                        <p>HORNET</p>
-                    </div>
-                </div>
-                <div class="right_menu">
-                    <ul class="navbar">
-                        <li class="navbar_element"><a href="login.html">MONTE A SUA</a></li>
-                        <li class="navbar_element"><a href="#">CADASTRO</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- card dentro do header aproveitando a imagem de fundo -->
-            <div class="card">
-                <div class="div_campos">
-                        <div class="container_campos">
-                        <p>CADASTRE-SE</p>
-                        <div class="campos">
-                            <input class="input_login" id="nome_input" placeholder="NOME">
-                            <input class="input_login" id="dtNasc_input" placeholder="DATA DE NASCIMENTO" onfocus="this.type='date'">
-                            <input class="input_login" id="email_input" placeholder="EMAIL">
-                            <input class="input_login" id="senha_input" placeholder="SENHA">
-                            <input class="input_login" id="confirSenha_input" placeholder="SENHA">
-                        </div>
-                        <button onclick="cadastrar()">ENVIAR</button>
-                    </div>
-                </div>
-                <div class="div_imagem"></div>
-            </div>
+  <div class="header">
+    <div class="container">
+      <div class="menu">
+        <div class="left_menu">
+          <ul class="navbar">
+            <li class="navbar_element"><a href="index.html">VERSÕES</a></li>
+            <li class="navbar_element"><a href="2024.html">2024</a></li>
+          </ul>
         </div>
-    </div>
+        <div class="logo_menu">
+          <div class="logo_fundo">
+            <p>HORNET</p>
+          </div>
+        </div>
+        <div class="right_menu">
+          <ul class="navbar">
+            <li class="navbar_element"><a href="login.html">MONTE A SUA</a></li>
+            <li class="navbar_element"><a href="#">CADASTRO</a></li>
+          </ul>
+        </div>
+      </div>
 
-    <div class="footer">
-        <p>FEITO COM AMOR!</p>
+      <!-- card dentro do header aproveitando a imagem de fundo -->
+      <div class="card">
+        <div class="div_campos">
+          <div class="container_campos">
+            <p>CADASTRE-SE</p>
+            <div class="campos">
+              <input class="input_login" id="nome_input" placeholder="NOME">
+              <input class="input_login" id="dtNasc_input" placeholder="DATA DE NASCIMENTO" onfocus="this.type='date'">
+              <input class="input_login" id="email_input" placeholder="EMAIL">
+              <input class="input_login" id="senha_input" placeholder="SENHA">
+              <input class="input_login" id="confirSenha_input" placeholder="SENHA">
+            </div>
+            <button onclick="cadastrar()">ENVIAR</button>
+          </div>
+        </div>
+        <div class="div_imagem"></div>
+      </div>
     </div>
-    
+  </div>
+
+  <div class="footer">
+    <p>FEITO COM AMOR!</p>
+  </div>
+
 </body>
+
 </html>
 
 <script>
-    function cadastrar() {
-      var nomeVar = nome_input.value;
-      var emailVar = email_input.value;
-      var dtNascVar = dtNasc_input.value;
-      var senhaVar = senha_input.value;
-      var confirmacaoSenhaVar = confirSenha_input.value;
-  
-      if (nomeVar == "" || dtNascVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-        console.log("Mensagem de erro para todos os campos em branco");
-  
-      } else {
-        console.log("Campos validádos! Enviando valores.")
-  
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
-            nomeServer: nomeVar,
-            dtNascServer: dtNascVar,
-            emailServer: emailVar,
-            senhaServer: senhaVar
-          }),
-        }).then(function (resposta) {
-          console.log("resposta: ", resposta);
-  
-          if (resposta.ok) {
-            console.log("Cadastro realizado com sucesso!");
-          } else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
-          }
-        })
-          .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-          });
-          
-        return false;
-      }
+  function cadastrar() {
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var dtNascVar = dtNasc_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirSenha_input.value;
+
+    if (nomeVar == "" || dtNascVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+      console.log("Mensagem de erro para todos os campos em branco");
+
+    } else {
+      console.log("Campos validádos! Enviando valores.")
+
+      // Enviando o valor da nova input
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nomeServer: nomeVar,
+          dtNascServer: dtNascVar,
+          emailServer: emailVar,
+          senhaServer: senhaVar
+        }),
+      }).then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          console.log("Cadastro realizado com sucesso!");
+
+          setTimeout(function () {
+            window.location = "login.html";
+          }, 1000);
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+
+      return false;
     }
-  </script>
+  }
+</script>

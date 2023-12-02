@@ -15,11 +15,17 @@ function cadastrar(nome, dtNasc, email, senha) {
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
-    var instrucao = `
+    var instrucao1 = `
         INSERT INTO usuario (nome, dtNasc, email, senha) VALUES ('${nome}', '${dtNasc}', '${email}', '${senha}');
     `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    console.log("Executando a instrução SQL: \n" + instrucao1);
+    database.executar(instrucao1);
+
+    var instrucao2 = `
+        INSERT INTO moto (idMoto, fkUsuario) VALUES (1, (SELECT idUsuario FROM usuario ORDER BY idUsuario DESC LIMIT 1));
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao2);
+    return database.executar(instrucao2);
 }
 
 module.exports = {
