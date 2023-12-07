@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="css/styleFonts.css">
     <link rel="stylesheet" href="css/styleDashboard.css">
+    <script src="https:///cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="navbar">
         <div class="container_navbar">
@@ -16,7 +19,7 @@
                 </div>
             </div>
             <div class="menu">
-                <p>OLÁ, <span id="nome_usuario"></span></p>
+                <p id="nome_usuario">OLÁ</span></p>
                 <a class="menu_item" href="index.html">HOME</a>
                 <p class="menu_item" onclick="sair()">SAIR</p>
             </div>
@@ -24,23 +27,93 @@
     </div>
     <div class="dashboard">
         <div class="dashboard_top">
-            <div class="kpi_left kpi"></div>
-            <div class="kpi_right kpi"></div>
+            <div class="grafico_top_left">
+                <h2 id="versoesPessoas">Preferência de cores</h2>
+                <canvas id="myChart1"></canvas>
+            </div>
+            <div class="grafico_top_right"></div>
         </div>
         <div class="dashboard_bottom">
-            <div class="grafico"></div>
+            <div class="grafico">
+                <h2 id="versoesPessoas">Preferência de versões</h2>
+                <canvas id="myChart3"></canvas>
+            </div>
         </div>
     </div>
-    
+
 </body>
+
 </html>
 
 <script>
-    // if(sessionStorage.length <= 0){
-    //     window.open("index.html", "_self");
-    // }
+    if (sessionStorage.length <= 0) {
+        window.open("index.html", "_self");
 
-    function sair(){
+    } else {
+        var nome = '';
+
+        for (var contadorLetras = 0; contadorLetras < sessionStorage.NOME_USUARIO.length; contadorLetras++) {
+            if (sessionStorage.NOME_USUARIO[contadorLetras] == ' ') {
+                contadorLetras = sessionStorage.NOME_USUARIO.length;
+                break;
+            }
+
+            nome += sessionStorage.NOME_USUARIO[contadorLetras];
+        }
+
+        nome_usuario.innerHTML = `OLÁ, ${(nome)}`;
+    }
+
+    var listaCores = [[], []];
+    window.onload = lerDados();
+
+    function lerDados() {
+        fetch(`/dashboard/cor/`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        for(var contadorRespota = 0; contadorRespota < resposta.length; contadorRespota++){
+                            listaCores[0][contadorRespota] = resposta[contadorRespota].cor;
+                            listaCores[1][contadorRespota] = resposta[contadorRespota].contagem;
+                        }
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+            plotarGrafico();
+    }
+
+    function plotarGrafico(){
+        console.log(listaCores);
+
+        let dados1 = {
+            datasets: [{
+                data: listaCores[1],
+                backgroundColor: listaCores[0],
+            }]
+        };
+
+        const config1 = {
+            type: 'pie',
+            data: dados1,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart1 = new Chart(
+            document.getElementById(`myChart1`),
+            config1
+        );
+
+
+
+    }
+
+    function sair() {
         sessionStorage.clear();
         window.open("login.html", "_self");
     }

@@ -87,13 +87,12 @@ body{
     /* background-color: red; */
 }
 
-.dashboard .dashboard_top .kpi{
-    display: flex;
+.grafico_top_left, .grafico_top_right{
     width: 30%;
     height: 50%;
     backdrop-filter: blur(20px);
     box-shadow: 5px 5px #000;
-    /* background-color: #fff; */
+
 }
 
 

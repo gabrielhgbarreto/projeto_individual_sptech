@@ -12,10 +12,43 @@ senha varchar(20)
 create table moto(
 idMoto int,
 fkUsuario int,
-versao char(1),
-cor char(3),
-ronco char(1)
+versao int,
+cor varchar(10),
+ronco int,
+	primary key (idMoto, fkUsuario)
+);
+
+create table avaliacao(
+idAvaliacao int,
+fkUsuario int,
+dtAvaliacao date,
+nota int,
+mensagem varchar(150),
+	primary key (idAvaliacao, fkUsuario)
 );
 
 
-select*from usuario;
+
+select * from usuario
+	order by idUsuario desc;
+
+select * from moto;
+    
+ 
+ 
+-- SELECT API
+select * from moto;
+select versao, count(versao) from moto
+	group by versao;
+
+        
+select null as ronco, avg(TIMESTAMPDIFF(YEAR, u.dtNasc, NOW())) contagem from usuario u
+union
+select ronco, count(*) contagem from moto
+	group by ronco order by contagem desc;
+
+
+select cor, count(*) from moto
+	group by cor;
+    
+

@@ -153,8 +153,31 @@
         }
 
         hue = Math.round(hue * 60);
-        corEscolhida = hue;
-        console.log(hue);
+        hue = (hue + 360) % 360; // Garante que o valor esteja no intervalo [0, 360)
+        console.log(`Matiz: ${hue}`);
+
+
+
+        if (hue > 25 && hue < 55){
+            corEscolhida = '#ff9100'; //laranja
+
+        } else if (hue > 55 && hue < 80){
+            corEscolhida = '#ffe600'; //amarelo
+
+        } else if (hue > 80 && hue < 190){
+            corEscolhida = '#16e105'; //verde
+            
+        } else if (hue > 190 && hue < 280){
+            corEscolhida = '#0079ff'; //azul
+            
+        } else if (hue > 280 && hue < 340){
+            corEscolhida = '#e700ff'; //rosa
+            
+        } else{
+            corEscolhida = '#ff0000'; //vermelho
+ 
+        }
+        console.log(corEscolhida);
     }
 
     function escolheRonco() {
@@ -183,7 +206,7 @@
     function salvarDados() {
         if (versaoEscolhida == "" || corEscolhida == "" || roncoEscolhido == "") {
             console.log("Mensagem de erro para todos os campos em branco");
-
+            return false;
         }
 
         fetch("/dashboard/enviar", {
@@ -218,7 +241,6 @@
 
     if ((sessionStorage.NOME_USUARIO).length > 0) {
         verificaCadastro.innerHTML = `
-            <a>OLÁ, ${(sessionStorage.NOME_USUARIO).toUpperCase()}</a>
-        `;
+            <a href="dashboard.html">MÉTRICAS</a>        `;
     }
 </script>

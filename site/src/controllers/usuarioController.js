@@ -21,7 +21,7 @@ function autenticar(req, res) {
                         console.log("ola, verifiquei");
 
                         console.log(resultadoAutenticar);
-                        
+
                         res.json({
                             id: resultadoAutenticar[0].idUsuario,
                             email: resultadoAutenticar[0].email,
@@ -76,6 +76,9 @@ function cadastrar(req, res) {
             .then(
                 function (resultado) {
                     res.json(resultado);
+                    let idUsuario = resultado.insertId;
+                    console.log(idUsuario);
+
                 }
             ).catch(
                 function (erro) {

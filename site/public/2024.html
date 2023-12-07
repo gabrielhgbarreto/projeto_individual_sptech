@@ -86,3 +86,14 @@
     </div>
 </body>
 </html>
+<script>
+        if((sessionStorage.NOME_USUARIO).length > 0){
+        verificaLogin.innerHTML = `
+            <a href="monteASua.html">MONTE A SUA</a>
+        `;
+
+        verificaCadastro.innerHTML = `
+            <a href="dashboard.html">MÉTRICAS</a>
+        `;
+    }
+</script>
