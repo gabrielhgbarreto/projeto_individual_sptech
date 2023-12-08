@@ -15,20 +15,32 @@ function cadastrar(nome, dtNasc, email, senha) {
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
-    var instrucao1 = `
+    var instrucaoInsertUsuario = `
         INSERT INTO usuario (nome, dtNasc, email, senha) VALUES ('${nome}', '${dtNasc}', '${email}', '${senha}');
     `;
-    console.log("Executando a instrução SQL: \n" + instrucao1);
-    return database.executar(instrucao1);
+    console.log("Executando a instrução SQL: \n" + instrucaoInsertUsuario);
 
-    // var instrucao2 = `
-    //     INSERT INTO moto (idMoto, fkUsuario) VALUES (1, (SELECT idUsuario FROM usuario ORDER BY idUsuario DESC LIMIT 1));
-    // `;
-    // console.log("Executando a instrução SQL: \n" + instrucao2);
-    // return database.executar(instrucao2);
+    return database.executar(instrucaoInsertUsuario)
+        .then (function (resultadoCadastro){
+            var idUsuario = resultadoCadastro.insertId;
+            console.log(idUsuario);
+            cadastrarMoto(idUsuario);
+        });
+}
+
+function cadastrarMoto(idUsuario){
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMoto():", idUsuario);
+
+    var instrucaoInsertMoto = `
+        INSERT INTO moto (idMoto, fkUsuario) VALUES (1, ${idUsuario});
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoInsertMoto);
+
+    return database.executar(instrucaoInsertMoto)
 }
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    cadastrarMoto
 };

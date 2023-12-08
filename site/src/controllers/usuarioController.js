@@ -1,5 +1,4 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -21,7 +20,7 @@ function autenticar(req, res) {
                         console.log("ola, verifiquei");
 
                         console.log(resultadoAutenticar);
-
+                        
                         res.json({
                             id: resultadoAutenticar[0].idUsuario,
                             email: resultadoAutenticar[0].email,
@@ -76,9 +75,7 @@ function cadastrar(req, res) {
             .then(
                 function (resultado) {
                     res.json(resultado);
-                    let idUsuario = resultado.insertId;
-                    console.log(idUsuario);
-
+                    console.log(`Resultado do cadastro${resultado}`);
                 }
             ).catch(
                 function (erro) {

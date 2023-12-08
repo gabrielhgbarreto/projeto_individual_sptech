@@ -13,34 +13,29 @@ create table moto(
 idMoto int,
 fkUsuario int,
 versao int,
-cor varchar(10),
+cor varchar(7),
 ronco int,
 	primary key (idMoto, fkUsuario)
 );
 
 create table avaliacao(
-idAvaliacao int,
+idAvaliacao int auto_increment,
 fkUsuario int,
-dtAvaliacao date,
+dtAvaliacao datetime default current_timestamp,
 nota int,
 mensagem varchar(150),
 	primary key (idAvaliacao, fkUsuario)
 );
 
-
-
-select * from usuario
-	order by idUsuario desc;
-
-select * from moto;
-    
+ select * from moto;
  
- 
--- SELECT API
-select * from moto;
+ select * from usuario;
+
+select * from avaliacao;
+-- -------------------------------------------------SELECT's API
 select versao, count(versao) from moto
-	group by versao;
-
+	group by versao order by versao;
+    
         
 select null as ronco, avg(TIMESTAMPDIFF(YEAR, u.dtNasc, NOW())) contagem from usuario u
 union

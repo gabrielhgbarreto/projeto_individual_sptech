@@ -40,11 +40,11 @@
           <div class="container_campos">
             <p>CADASTRE-SE</p>
             <div class="campos">
-              <input class="input_login" id="nome_input" placeholder="NOME">
-              <input class="input_login" id="dtNasc_input" placeholder="DATA DE NASCIMENTO" onfocus="this.type='date'">
-              <input class="input_login" id="email_input" placeholder="EMAIL">
-              <input class="input_login" id="senha_input" placeholder="SENHA">
-              <input class="input_login" id="confirSenha_input" placeholder="SENHA">
+              <input onkeyup="validarCampos()" class="input_login" id="nome_input" placeholder="NOME">
+              <input onkeyup="validarCampos()" class="input_login" id="dtNasc_input" placeholder="DATA DE NASCIMENTO" onfocus="this.type='date'">
+              <input onkeyup="validarCampos()" class="input_login" id="email_input" placeholder="EMAIL">
+              <input onkeyup="validarCampos()" class="input_login" id="senha_input" placeholder="SENHA" type="password">
+              <input onkeyup="validarCampos()" class="input_login" id="confirSenha_input" placeholder="SENHA" type="password">
             </div>
             <button onclick="cadastrar()">ENVIAR</button>
           </div>
@@ -63,6 +63,36 @@
 </html>
 
 <script>
+
+  function validarCampos(){
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var dtNascVar = dtNasc_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirSenha_input.value;
+
+    nome_input.style.backgroundColor = '#fff'
+    email_input.style.backgroundColor = '#fff'
+    senha_input.style.backgroundColor = '#fff'
+    confirSenha_input.style.backgroundColor = '#fff'
+
+
+    if (nomeVar.length < 1) {
+      nome_input.style.backgroundColor = '#FF8282';
+
+    } else if (emailVar.includes('@') == false || emailVar.includes('.com') == false) {
+      email_input.style.backgroundColor = '#FF8282';
+
+    } else if (senhaVar.length < 8) {
+      senha_input.style.backgroundColor = '#FF8282';
+
+    } else if (confirmacaoSenhaVar == "" || senhaVar != confirmacaoSenhaVar) {
+      confirSenha_input.style.backgroundColor = '#FF8282';
+
+    }
+  }
+  
+
   function cadastrar() {
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
@@ -75,6 +105,7 @@
 
     } else {
       console.log("Campos validádos! Enviando valores.")
+    }
 
       // Enviando o valor da nova input
       fetch("/usuarios/cadastrar", {
@@ -95,12 +126,12 @@
 
         if (resposta.ok) {
           console.log("Cadastro realizado com sucesso!");
-
           console.log(resposta);
+          
+          setTimeout(function () {
+            window.location = "login.html";
+          }, 1000);
 
-          // setTimeout(function () {
-          //   window.location = "login.html";
-          // }, 1000);
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
@@ -108,8 +139,6 @@
         .catch(function (resposta) {
           console.log(`#ERRO: ${resposta}`);
         });
-
-      return false;
-    }
+    
   }
 </script>

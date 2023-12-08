@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/styleFonts.css">
+    <link rel="stylesheet" href="css/styleAvaliacao.css">
+    <script src="https:///cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="container_navbar">
+            <div class="logo">
+                <div class="fundo_logo">
+                    <p>HORNET</p>
+                </div>
+            </div>
+            <div class="menu">
+                <p id="nome_usuario">OLÁ</span></p>
+                <a class="menu_item" href="index.html">HOME</a>
+                <a class="menu_item" href="dashboard.html">DASHBOARD</a>
+                <a class="menu_item" href="#">AVALIAÇÃO</a>
+                <p class="menu_item" onclick="sair()">SAIR</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="avaliacao">
+        <div class="container_card">
+            <h2>AVALIE SUA EXPERIÊNCIA EM NOSSO SITE</h2>
+            <textarea id="textoFeedback" class="feedback" type="textarea"></textarea>
+            <div class="avaliacao_estrelas">
+                <div id="star1" onclick="estrela1()"><img src="assets/imgs/dash_page/estrela.png" alt=""></div>
+                <div id="star2" onclick="estrela2()"><img src="assets/imgs/dash_page/estrela.png" alt=""></div>
+                <div id="star3" onclick="estrela3()"><img src="assets/imgs/dash_page/estrela.png" alt=""></div>
+                <div id="star4" onclick="estrela4()"><img src="assets/imgs/dash_page/estrela.png" alt=""></div>
+                <div id="star5" onclick="estrela5()"><img src="assets/imgs/dash_page/estrela.png" alt=""></div>
+            </div>
+            <button onclick="enviarFeedback()">ENVIAR</button>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>
+
+<script>
+    var avaliacao = 0;
+
+    function enviarFeedback(){
+        var descricao = textoFeedback.value;
+        console.log("entrei no enviar feedback");
+
+        fetch("/dashboard/feedback", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                idServer: sessionStorage.ID_USUARIO,
+                avaliacaoServer: avaliacao,
+                descricaoServer: descricao
+            }),
+        }).then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                console.log("Feedback enviado ao banco com sucesso!");
+            } else {
+                throw "Houve um erro ao tentar enviar o feedback!";
+            }
+        })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    }
+
+
+
+
+    if (sessionStorage.length <= 0) {
+        window.open("index.html", "_self");
+
+    } else {
+        var nome = '';
+
+        for (var contadorLetras = 0; contadorLetras < sessionStorage.NOME_USUARIO.length; contadorLetras++) {
+            if (sessionStorage.NOME_USUARIO[contadorLetras] == ' ') {
+                contadorLetras = sessionStorage.NOME_USUARIO.length;
+                break;
+            }
+
+            nome += sessionStorage.NOME_USUARIO[contadorLetras];
+        }
+
+        nome_usuario.innerHTML = `OLÁ, ${(nome)}`;
+    }
+
+    function estrela1(){
+        avaliacao = 1;
+        for(var contadorEstrela = 1; contadorEstrela <= 5; contadorEstrela++){
+            var idEstrela = document.getElementById(`star${contadorEstrela}`);
+            if (contadorEstrela <= avaliacao){
+                idEstrela.innerHTML = `<img class="star" src="assets/imgs/dash_page/estrela1.png" alt="">`;
+            } else{
+                idEstrela.innerHTML = `<img class="star" src="assets/imgs/dash_page/estrela.png" alt="">`;
+            }
+        }
+    }
+    function estrela2(){
+        avaliacao = 2;
+        for(var contadorEstrela = 1; contadorEstrela <= 5; contadorEstrela++){
+            var idEstrela = document.getElementById(`star${contadorEstrela}`);
+            if (contadorEstrela <= avaliacao){
+                idEstrela.innerHTML = `<img class="star" src="assets/imgs/dash_page/estrela1.png" alt="">`;
+            } else{
+                idEstrela.innerHTML = `<img class="star" src="assets/imgs/dash_page/estrela.png" alt="">`;
+            }
+        }
+    }
+    function estrela3(){
+        avaliacao = 3;
+        for(var contadorEstrela = 1; contadorEstrela <= 5; contadorEstrela++){
+            var idEstrela = document.getElementById(`star${contadorEstrela}`);
+            if (contadorEstrela <= avaliacao){
+                idEstrela.innerHTML = `<img class="star" src="assets/imgs/dash_page/estrela1.png" alt="">`;
+            } else{
+                idEstrela.innerHTML = `<img class="star" src="assets/imgs/dash_page/estrela.png" alt="">`;
+            }
+        }
+    }
+    function estrela4(){
+        avaliacao = 4;
+        for(var contadorEstrela = 1; contadorEstrela <= 5; contadorEstrela++){
+            var idEstrela = document.getElementById(`star${contadorEstrela}`);
+            if (contadorEstrela <= avaliacao){
+                idEstrela.innerHTML = `<img class="star" src="assets/imgs/dash_page/estrela1.png" alt="">`;
+            } else{
+                idEstrela.innerHTML = `<img class="star" src="assets/imgs/dash_page/estrela.png" alt="">`;
+            }
+        }
+    }
+    function estrela5(){
+        avaliacao = 5;
+        for(var contadorEstrela = 1; contadorEstrela <= 5; contadorEstrela++){
+            var idEstrela = document.getElementById(`star${contadorEstrela}`);
+            if (contadorEstrela <= avaliacao){
+                idEstrela.innerHTML = `<img class="star" src="assets/imgs/dash_page/estrela1.png" alt="">`;
+            } else{
+                idEstrela.innerHTML = `<img class="star" src="assets/imgs/dash_page/estrela.png" alt="">`;
+            }
+        }
+    }
+
+    function sair() {
+        sessionStorage.clear();
+        window.open("login.html", "_self");
+    }
+</script>

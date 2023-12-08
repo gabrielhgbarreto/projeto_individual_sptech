@@ -69,94 +69,82 @@ body{
     transform: scale(1.1);
 }
 
-.dashboard{
-    width: 80%;
-    height: 100%;
+.avaliacao{
     background-image: url(../assets/imgs/dash_page/banner_dash3.png);
     background-size: cover;
     background-position: center;
-    /* background-color: green;     */
-    font-family: subTitleFont;
-    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+    font-family: titleFont;
+    /* /* font-size: 12px; */
     color: #fff;
     text-shadow: 1px 1px black;
 }
 
-.dashboard .dashboard_top{
-    width: 100%;
-    height: 50%;
+.avaliacao .container_card{
+    padding-top: 50px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 70%;
+    height: 80%;
+    backdrop-filter: blur(20px);
+    /* border-radius: 20px; */
+    box-shadow: 5px 5px #000;
+    
+    /* background-color: blue; */
+}
+
+.avaliacao .container_card .feedback{
+    height: 100px;
+    width: 70%;
+    border: 4px solid #fff;
+    background-color: transparent;
+    border-radius: 20px;
+    font-family: textFont;
+    font-size: 30px;
+    color: #fff;
+    padding: 5px;
+}
+
+
+.avaliacao .container_card .avaliacao_estrelas{
+    display: flex;
+    width: 80%;
+    height: 120px;
     justify-content: space-evenly;
     align-items: center;
-    /* background-color: red; */
+    /* background-color: orange; */
 }
 
-.grafico_top_left, .grafico_top_right{
-    width: 30%;
-    height: 50%;
-    backdrop-filter: blur(20px);
-    box-shadow: 5px 5px #000;
-
+.avaliacao .container_card .avaliacao_estrelas img{
+    width: 100px;
+    height: 100px;
 }
 
-.grafico_top_left{
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.avaliacao .container_card .avaliacao_estrelas img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
-.grafico_top_right{
-    display: flex;
+.avaliacao .container_card button{
+    align-self: end;
+    margin-right: 20px;
+    background-color: #FF3131;
+    width: 130px;
+    height: 30px;
+    border: 1px solid #FF3131;
+    border-radius: 20px;
+    font-family: subTitleFont;
+    color: #fff;
+    cursor: pointer;
 }
 
-.grafico_top_right .ronco_kpi{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 15px;
-}
-
-.grafico_top_right .idade_kpi{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    gap: 15px;
-}
-
-#ronco_preferido, #idade{
-    font-size: 15px;
-    font-family: titleFont;
-}
-
-.grafico{
-    padding: 20px 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.dashboard .dashboard_bottom{
-    width: 100%;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: green; */
-}
-
-.dashboard .dashboard_bottom .grafico{
-    width: 75%;
-    height: 70%;
-    backdrop-filter: blur(20px);
-    box-shadow: 5px 5px #000;
+.avaliacao .container_card button:hover{
+    background-color: transparent;
+    color: #FF3131;
 }

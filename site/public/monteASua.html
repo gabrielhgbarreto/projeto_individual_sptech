@@ -132,16 +132,9 @@
         var colorMin = Math.min(r, g, b);
         var colorMax = Math.max(r, g, b);
         var delta = colorMax - colorMin;
-        var hue = 0;
+        var hue = 0;       
 
-        if (delta == 0) {
-            if(colorMax <= 0.5){
-                hue = -0.5; //-1 == preto
-            } else {
-                hue = -1; //-2 == preto
-            }
-
-        } else if (colorMax == r) {
+        if (colorMax == r) {
             hue = ((g - b) / delta) % 6;
 
         } else if (colorMax == g) {
@@ -157,8 +150,15 @@
         console.log(`Matiz: ${hue}`);
 
 
+        if (delta == 0) {
+            if(colorMax <= 0.5){
+                corEscolhida = '#000000'; //preto
 
-        if (hue > 25 && hue < 55){
+            } else {
+                corEscolhida = '#ffffff'; //branco
+
+            } 
+        } else if (hue > 25 && hue < 55){
             corEscolhida = '#ff9100'; //laranja
 
         } else if (hue > 55 && hue < 80){
@@ -217,7 +217,7 @@
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                idSever: sessionStorage.ID_USUARIO,
+                idServer: sessionStorage.ID_USUARIO,
                 versaoServer: versaoEscolhida,
                 corServer: corEscolhida,
                 roncoServer: roncoEscolhido
